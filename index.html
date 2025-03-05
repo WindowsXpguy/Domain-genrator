@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Name Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        input, button { margin: 10px; padding: 10px; font-size: 16px; }
+        #result { margin-top: 20px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h1>Domain Name Generator</h1>
+    <input type="text" id="keyword" placeholder="Enter a word">
+    <button onclick="generateDomain()">Generate</button>
+    <div id="result"></div>
+
+    <script>
+        function generateDomain() {
+            let keyword = document.getElementById("keyword").value.trim();
+            if (!keyword) {
+                alert("Please enter a word");
+                return;
+            }
+           
+            const extensions = [".com", ".net", ".org", ".io", ".dev"];
+            let domain = keyword + extensions[Math.floor(Math.random() * extensions.length)];
+           
+            let resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `Suggested Domain: <strong>${domain}</strong><br>
+            <a href="https://www.namecheap.com/domains/registration/results/?domain=${domain}" target="_blank">Check Availability</a>`;
+        }
+    </script>
+</body>
+</html>
